@@ -1,0 +1,305 @@
+{
+	"info": {
+		"_postman_id": "7a2b91c1-4b4d-4e2e-8f12-88f9a21b34c2",
+		"name": "POC Facturación - Generación de Secuencias con Hilos Virtuales",
+		"description": "Colección Postman para simular peticiones de facturación con secuencias independientes, hilos virtuales, gestión de stock FEFO y catálogo ampliado de tecnología.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Simular Factura - CON ESPERA (Validación Rápida)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/simular?detalles=10&maxComentarios=2&escenario=CON_ESPERA&modo=HILOS&clienteExistente=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"simular"
+					],
+					"query": [
+						{
+							"key": "detalles",
+							"value": "10"
+						},
+						{
+							"key": "maxComentarios",
+							"value": "2"
+						},
+						{
+							"key": "escenario",
+							"value": "CON_ESPERA"
+						},
+						{
+							"key": "modo",
+							"value": "HILOS"
+						},
+						{
+							"key": "clienteExistente",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Simular Factura - SIN ESPERA (Validación Solapada)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/simular?detalles=10&maxComentarios=2&escenario=SIN_ESPERA&modo=HILOS&clienteExistente=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"simular"
+					],
+					"query": [
+						{
+							"key": "detalles",
+							"value": "10"
+						},
+						{
+							"key": "maxComentarios",
+							"value": "2"
+						},
+						{
+							"key": "escenario",
+							"value": "SIN_ESPERA"
+						},
+						{
+							"key": "modo",
+							"value": "HILOS"
+						},
+						{
+							"key": "clienteExistente",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Simular Factura - Catálogo Ampliado (15 Detalles)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/simular?detalles=15&maxComentarios=3&escenario=CON_ESPERA&modo=HILOS&clienteExistente=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"simular"
+					],
+					"query": [
+						{
+							"key": "detalles",
+							"value": "15"
+						},
+						{
+							"key": "maxComentarios",
+							"value": "3"
+						},
+						{
+							"key": "escenario",
+							"value": "CON_ESPERA"
+						},
+						{
+							"key": "modo",
+							"value": "HILOS"
+						},
+						{
+							"key": "clienteExistente",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Simular Factura - Modo SECUENCIAL (Antigua Arquitectura)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/facturas/simular?detalles=10&maxComentarios=2&escenario=CON_ESPERA&modo=SECUENCIAL&clienteExistente=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"facturas",
+						"simular"
+					],
+					"query": [
+						{
+							"key": "detalles",
+							"value": "10"
+						},
+						{
+							"key": "maxComentarios",
+							"value": "2"
+						},
+						{
+							"key": "escenario",
+							"value": "CON_ESPERA"
+						},
+						{
+							"key": "modo",
+							"value": "SECUENCIAL"
+						},
+						{
+							"key": "clienteExistente",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5. Consultar Stock Detallado de Catálogo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/catalogo/stock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"catalogo",
+						"stock"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "6. Reabastecer Producto Específico Puntual",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/inventario/reabastecer?productoId=3&cantidad=25&observacion=Reabastecimiento%20urgente%20MacBook",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventario",
+						"reabastecer"
+					],
+					"query": [
+						{
+							"key": "productoId",
+							"value": "3"
+						},
+						{
+							"key": "cantidad",
+							"value": "25"
+						},
+						{
+							"key": "observacion",
+							"value": "Reabastecimiento urgente MacBook"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "7. Reabastecer Global Automático",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/inventario/reabastecer?observacion=Reabastecimiento%20global",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"inventario",
+						"reabastecer"
+					],
+					"query": [
+						{
+							"key": "observacion",
+							"value": "Reabastecimiento global"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8. Listar Productos Paginados y Filtrados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/catalogo/productos/paginados?categoria=PARTES&palabraClave=ryzen&pagina=0&tamanio=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"catalogo",
+						"productos",
+						"paginados"
+					],
+					"query": [
+						{
+							"key": "categoria",
+							"value": "PARTES"
+						},
+						{
+							"key": "palabraClave",
+							"value": "ryzen"
+						},
+						{
+							"key": "pagina",
+							"value": "0"
+						},
+						{
+							"key": "tamanio",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
